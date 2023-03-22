@@ -1,0 +1,31 @@
+{
+  "name": "umtlv/otp-2",
+  "description": "OTP",
+  "type": "package",
+  "autoload": {
+    "files": [
+      "app/helpers.php"
+    ],
+    "psr-4": {
+      "Axel\\Otp\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Nurislan Umetaliev",
+      "email": "nurislan.umetaliev@axelkg.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.3",
+    "laravel/framework": "^8.37|^9.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Axel\\Otp\\Providers\\OtpServiceProvider"
+      ]
+    }
+  }
+}
