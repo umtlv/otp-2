@@ -1,6 +1,6 @@
 <?php
 
-namespace src;
+namespace Axel\Otp;
 
 use Exception;
 use Illuminate\Support\Carbon;
