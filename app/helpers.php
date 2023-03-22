@@ -35,3 +35,31 @@ if (!function_exists('create_otp')) {
         return mt_rand(100000, 999999);
     }
 }
+
+if (!function_exists('user_ip')) {
+    function user_ip(): string
+    {
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CF_CONNECTING_IP']))
+            $ipaddress .= '' . $_SERVER['HTTP_CF_CONNECTING_IP'];
+        else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress .= '' . $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else if (isset($_SERVER['HTTP_X_FORWARDED']))
+            $ipaddress .= '' . $_SERVER['HTTP_X_FORWARDED'];
+        else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
+            $ipaddress .= '' . $_SERVER['HTTP_FORWARDED_FOR'];
+        else if (isset($_SERVER['HTTP_FORWARDED']))
+            $ipaddress .= '' . $_SERVER['HTTP_FORWARDED'];
+        else if (isset($_SERVER['HTTP_CLIENT_IP']))
+            $ipaddress .= '' . $_SERVER['HTTP_CLIENT_IP'];
+        else if (isset($_SERVER['REMOTE_ADDR']))
+            $ipaddress .= '' . $_SERVER['REMOTE_ADDR'];
+
+        if ($ipaddress == "")
+            $ipaddress = 'UNKNOWN';
+        if ($ipaddress == "::1")
+            $ipaddress = '0.0.0.0';
+
+        return $ipaddress;
+    }
+}
